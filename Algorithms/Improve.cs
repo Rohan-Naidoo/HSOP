@@ -68,31 +68,31 @@ namespace HSOP.Algorithms
 
         private static bool addedPoint(ref List<int> route, Instance instance, ref double leftDistance, ref List<int> unvisitedVertices)
         {
-            int indeksPoKtorymNalezyDodac = -1;
-            int wezelDoDodania = -1;
-            double minimalnyStosunek = double.MinValue;
+            int indexToAddAfter = -1;
+            int vertexToAdd = -1;
+            double minimalRatio = double.MinValue;
             for (int j = 0; j < route.Count - 1; j++)
             {
-                List<int> dostepneWezly = generateAvailableVertices(instance.distanceMatrix, leftDistance, route[j] - 1, route[j + 1] - 1, unvisitedVertices);
-                for (int i = 0; i < dostepneWezly.Count; i++)
+                List<int> availableVertices = generateAvailableVertices(instance.distanceMatrix, leftDistance, route[j] - 1, route[j + 1] - 1, unvisitedVertices);
+                for (int i = 0; i < availableVertices.Count; i++)
                 {
-                    double punktZaOdleglosc = calculateNumberOfPointsPerDistanceUnit(instance.distanceMatrix, instance.points, route[j], dostepneWezly[i], route[j + 1]);
-                    if (punktZaOdleglosc < 0)
+                    double pointForDistance = calculateNumberOfPointsPerDistanceUnit(instance.distanceMatrix, instance.points, route[j], availableVertices[i], route[j + 1]);
+                    if (pointForDistance < 0)
                         continue;
-                    if (punktZaOdleglosc > minimalnyStosunek)
+                    if (pointForDistance > minimalRatio)
                     {
-                        wezelDoDodania = dostepneWezly[i];
-                        indeksPoKtorymNalezyDodac = j;
-                        minimalnyStosunek = punktZaOdleglosc;
+                        vertexToAdd = availableVertices[i];
+                        indexToAddAfter = j;
+                        minimalRatio = pointForDistance;
                     }
                 }
             }
-            if (indeksPoKtorymNalezyDodac == -1)
+            if (indexToAddAfter == -1)
                 return false;
 
-            leftDistance -= generateDistanceProfit(instance.distanceMatrix, route[indeksPoKtorymNalezyDodac], wezelDoDodania, route[indeksPoKtorymNalezyDodac + 1]);
-            route.Insert(indeksPoKtorymNalezyDodac + 1, wezelDoDodania);
-            unvisitedVertices.Remove(wezelDoDodania);
+            leftDistance -= generateDistanceProfit(instance.distanceMatrix, route[indexToAddAfter], vertexToAdd, route[indexToAddAfter + 1]);
+            route.Insert(indexToAddAfter + 1, vertexToAdd);
+            unvisitedVertices.Remove(vertexToAdd);
             return true;
         }
 
