@@ -13,9 +13,9 @@ namespace HSOP.Algorithms
             List<int> routeList = route.ToList();
             for (int i = 0; i < numberOfPointsToRemove; i++)
             {
-                int indeksWezlaWSciezce = calculateIndexWithMaximalPointsIncreaseByDistance(route.ToArray(), instance);
-                univistedVertices.Add(route[indeksWezlaWSciezce]);
-                routeList.Remove(route[indeksWezlaWSciezce]);
+                int indexOfNodeInRoute = calculateIndexWithMaximalPointsIncreaseByDistance(route.ToArray(), instance);
+                univistedVertices.Add(route[indexOfNodeInRoute]);
+                routeList.Remove(route[indexOfNodeInRoute]);
             }
 
             double leftDistance = instance.maxDistance - Helper.calculateRouteLength(routeList.ToArray(), instance.distanceMatrix);
