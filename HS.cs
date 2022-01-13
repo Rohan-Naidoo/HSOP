@@ -38,8 +38,8 @@ namespace HSOP
                     for (int j = 1; j < newSolution.getRoute().Length - 1; j++)
                         unvisitedVertices.Remove(newSolution.getRoute()[j]);
                     Result improvedSolution = Improve.changeVertex(instance, newSolution.getRoute(), unvisitedVertices, 1);
-                    double przyrostPunktow = improvedSolution.getObjectiveFunctionValue() - newSolution.getObjectiveFunctionValue();
-                    if (przyrostPunktow > 0)
+                    double pointsIncrease = improvedSolution.getObjectiveFunctionValue() - newSolution.getObjectiveFunctionValue();
+                    if (pointsIncrease > 0)
                     {
                         newSolution = improvedSolution;
                         newSolution = _2opt.solve(instance.distanceMatrix, instance.points, newSolution);
