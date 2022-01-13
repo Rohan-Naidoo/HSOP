@@ -37,14 +37,14 @@ namespace HSOP.Algorithms
 
         private static int[] changePoints(int[] route, int firstPointIndex, int secondPointIndex)
         {
-            int[] sciezka = new int[route.Length];
+            int[] routeTmp = new int[route.Length];
             for (int i = 0; i < firstPointIndex; i++)
-                sciezka[i] = route[i];
+                routeTmp[i] = route[i];
             for (int i = firstPointIndex; i <= secondPointIndex; i++)
-                sciezka[i] = route[firstPointIndex + secondPointIndex - i];
+                routeTmp[i] = route[firstPointIndex + secondPointIndex - i];
             for (int i = secondPointIndex + 1; i < route.Length; i++)
-                sciezka[i] = route[i];
-            return sciezka;
+                routeTmp[i] = route[i];
+            return routeTmp;
         }
     }
 }
