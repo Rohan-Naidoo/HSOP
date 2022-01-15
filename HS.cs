@@ -1,7 +1,6 @@
-﻿using HSOP.Algorithms;
+using HSOP.Algorithms;
 using HSOP.Helpers;
 using HSOP.Models;
-using HSOP.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
