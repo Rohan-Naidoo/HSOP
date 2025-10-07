@@ -59,7 +59,7 @@ namespace HSOP.Helpers
             return new Result(routeToAdd, Helper.calculatePoints(routeToAdd, instance.points));
         }
 
-        private new static List<AvailableVertex> generateSuccessorVerticesSortedByObjectiveFunctionValue(int previousVertex, List<Result> HM, List<int> availableVertices, double[,] distanceMatrix)
+        private static List<AvailableVertex> generateSuccessorVerticesSortedByObjectiveFunctionValue(int previousVertex, List<Result> HM, List<int> availableVertices, double[,] distanceMatrix)
         {
             List<AvailableVertex> successorVertices = new List<AvailableVertex>();
             for (int i = 0; i < HM.Count; i++)

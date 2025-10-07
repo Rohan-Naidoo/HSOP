@@ -45,7 +45,7 @@
     <Compile Include="Models\Intance.cs" />
     <Compile Include="Models\Rang.cs" />
     <Compile Include="Models\Result.cs" />
-    <Compile Include="Helpers\HSSolution.cs" />
+    <Compile Include="Helpers\HSConstruction.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
