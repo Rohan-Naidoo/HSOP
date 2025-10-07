@@ -69,7 +69,7 @@ namespace HSOP.Helpers
         {
             var xd = x1 - x2;
             var yd = y1 - y2;
-            var r = Math.Sqrt((xd * xd + yd * yd) / 10.0);
+            var r = Math.Sqrt((xd * xd + yd * yd));
             var t = Math.Round(r, MidpointRounding.AwayFromZero);
             return t < r ? t + 1 : t;
         }
