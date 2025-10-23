@@ -8,7 +8,11 @@ This repo allows for easier implementation of the original HSOP
 ## Instructions
 - Ensure that you have the relevant .NET framework (4.6.1 - development version)
 - Clean and build using dotnet commands
-- Run the exe
+- Run the exe 
+- I used  
+``` bash
+dotnet clean; if ($LASTEXITCODE -eq 0) { dotnet build; .\bin\Debug\HSOP.exe }          
+```
 
 ## Notes
 - Even though the code is virtually untouched, I could not obtained the claimed results from https://doi.org/10.1371/journal.pone.0264584
