@@ -76,7 +76,7 @@ namespace HSOP
         {
         
             var path = args.Length > 0 ? args[0] : 
-            "tests/Tsiligirides_1/tsiligirides_problem_1_budget_85.txt";
+            "tests/Tsiligirides_1/tsiligirides_problem_1_budget_20.txt";
             if (!File.Exists(path))
             {
                 Console.WriteLine($"File not found: {path}");
@@ -97,7 +97,7 @@ namespace HSOP
             }
 
             double maxDistance = double.Parse(header[0], CultureInfo.InvariantCulture);
-            int noOfFirstVertex = 1;
+            
 
             var coordLines = lines.Skip(1).ToArray();
             int n = coordLines.Length;
@@ -122,6 +122,7 @@ namespace HSOP
             }
 
             var points = coords.Select(c => c.weight).ToArray();
+            int noOfFirstVertex = 1;
             int noOfLastVertex = 2; // assume last vertex index = 2
             var instance = new Instance(coords, distanceMatrix, points, maxDistance, noOfFirstVertex, noOfLastVertex);
 
@@ -133,31 +134,6 @@ namespace HSOP
             double routeLength = Helper.calculateRouteLength(result.getRoute(), instance.distanceMatrix);
             Console.WriteLine($"Route length: {routeLength}");
             Console.WriteLine($"maxDistance: {instance.maxDistance}");
-            // Console.WriteLine($"noOfFirstVertex: {instance.noOfFirstVertex}");
-            // Console.WriteLine($"noOfLastVertex: {instance.noOfLastVertex}");
-
-            // if (instance.distanceMatrix != null)
-            // {
-            //     int r = instance.distanceMatrix.GetLength(0), ccount = instance.distanceMatrix.GetLength(1);
-            //     Console.WriteLine($"distanceMatrix: {r}x{ccount}");
-            //     // print first few rows for brevity
-            //     int rowsToShow = Math.Min(5, r);
-            //     for (int i = 0; i < rowsToShow; i++)
-            //     {
-            //         var row = new double[ccount];
-            //         for (int j = 0; j < ccount; j++) row[j] = instance.distanceMatrix[i, j];
-            //         Console.WriteLine(string.Join(", ", row.Select(v => v.ToString(CultureInfo.InvariantCulture))));
-            //     }
-            // }
-
-            // Console.WriteLine("Instance coordinates:");
-            // for (int i = 0; i < instance.coordinates.Length; i++)
-            // {
-            //     var c = instance.coordinates[i];
-            //     Console.WriteLine($"{i + 1}: x={c.x.ToString(CultureInfo.InvariantCulture)}, y={c.y.ToString(CultureInfo.InvariantCulture)}, w={c.weight.ToString(CultureInfo.InvariantCulture)}");
-            // }
-
-
         }
     }
 }
